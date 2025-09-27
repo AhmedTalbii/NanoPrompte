@@ -2,5 +2,31 @@
     "manifest_version": 3,
     "name": "ai_prompter",
     "version": "1.0",
-    "description": "ai prompter that helps pepole improve theire prompt with ai this extension auto detect any input in nown "
+    "description": "ai prompter that helps pepole improve theire prompts by providing to them better resultes when theie are typing",
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*",
+        "https://www.perplexity.ai/*",
+        "https://grok.com/*",
+        "https://claude.ai/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chatgpt.com/*",
+                "https://gemini.google.com/*",
+                "https://www.perplexity.ai/*",
+                "https://grok.com/*",
+                "https://claude.ai/*"
+            ],
+            "js": [
+                "script.js"
+            ],
+            "type": "module"
+        }
+    ]
 }
