@@ -28,5 +28,13 @@
             ],
             "type": "module"
         }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/GenerateIcon.png"
+            ],
+            "matches": ["<all_urls>"]
+        }
     ]
 }
