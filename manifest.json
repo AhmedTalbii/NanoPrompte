@@ -24,6 +24,7 @@
                 "https://claude.ai/*"
             ],
             "js": [
+                "modules/resultsContainer.js",
                 "modules/buttonGenerate.js",
                 "script.js"
             ],

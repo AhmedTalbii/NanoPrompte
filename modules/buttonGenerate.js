@@ -35,9 +35,9 @@ class GenerateButton {
 
       composerForm.prepend(button);
       button.addEventListener("click", () => {
-        let input = document.querySelector(".ProseMirror").textContent;
+        let rC = new ResultsContainer();
+        rC.show();
         this.delete();
-        console.log(input);
       });
       requestAnimationFrame(() => {
         button.style.opacity = "1";
