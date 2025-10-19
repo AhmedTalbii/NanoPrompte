@@ -22,7 +22,7 @@ class GenerateButton {
       button.style.display = "flex";
       button.style.alignItems = "center";
       button.style.position = "absolute";
-      button.style.cursor  = "pointer";
+      button.style.cursor = "pointer";
       button.style.background =
         "linear-gradient(130deg,rgba(2, 0,36,1) 0%, rgba(9,9,121,1) 100%)";
       button.style.padding = "2px 10px";
@@ -35,6 +35,10 @@ class GenerateButton {
 
       composerForm.prepend(button);
       button.addEventListener("click", () => {
+        let p = composerForm.querySelector("p");
+        if (p) {
+          // Here put the code for generating prompts
+        };
         let rC = new ResultsContainer();
         rC.show();
         this.delete();
@@ -48,8 +52,10 @@ class GenerateButton {
 
   delete() {
     const btn = document.getElementById(this.id);
-    if (btn){btn.style.opacity = "0";
-    btn.style.transform = "translateY(0px)";
-    setTimeout(() => btn.remove(), 300);};
+    if (btn) {
+      btn.style.opacity = "0";
+      btn.style.transform = "translateY(0px)";
+      setTimeout(() => btn.remove(), 300);
+    };
   }
 }

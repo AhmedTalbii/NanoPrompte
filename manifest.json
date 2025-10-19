@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "ai_prompter",
+    "name": "Ai Prompte Helper",
     "version": "1.0",
-    "description": "ai prompter that helps pepole improve theire prompts by providing to them better resultes when theie are typing",
+    "description": "Ai Prompte Helper that helps pepole improve theire prompts by providing to them better resultes when theie are typing",
     "permissions": [
         "activeTab",
         "scripting"
@@ -14,6 +14,11 @@
         "https://grok.com/*",
         "https://claude.ai/*"
     ],
+    "icons": {
+        "16": "assets/GenerateIcon.png",
+        "48": "assets/GenerateIcon.png",
+        "128": "assets/GenerateIcon.png"
+    },
     "content_scripts": [
         {
             "matches": [
@@ -36,7 +41,9 @@
             "resources": [
                 "assets/GenerateIcon.png"
             ],
-            "matches": ["<all_urls>"]
+            "matches": [
+                "<all_urls>"
+            ]
         }
     ]
 }
