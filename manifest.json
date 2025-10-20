@@ -4,6 +4,7 @@
     "version": "1.0",
     "description": "Ai Prompte Helper that helps pepole improve theire prompts by providing to them better resultes when theie are typing",
     "permissions": [
+        "http://localhost:3000/",
         "activeTab",
         "scripting"
     ],
@@ -45,5 +46,8 @@
                 "<all_urls>"
             ]
         }
-    ]
+    ],
+    "background": {
+        "service_worker": "./background/background.js"
+    }
 }

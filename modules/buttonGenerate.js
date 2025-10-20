@@ -37,11 +37,15 @@ class GenerateButton {
       button.addEventListener("click", () => {
         let p = composerForm.querySelector("p");
         if (p) {
-          // Here put the code for generating prompts
-        };
-        let rC = new ResultsContainer();
-        rC.show();
-        this.delete();
+          chrome.runtime.sendMessage({ input: p.textContent }, (res) => {
+            if (res.error) console.error(res.error);
+            else {
+              let rC = new ResultsContainer();
+              rC.show(res.versions);
+              this.delete();
+            };
+          });
+        }
       });
       requestAnimationFrame(() => {
         button.style.opacity = "1";

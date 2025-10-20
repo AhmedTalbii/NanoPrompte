@@ -3,9 +3,8 @@ class ResultsContainer {
         this.container = null;
     }
 
-    show() {
+    show(arr) {
         if (this.container) return;
-        const arr = ["title 1", `title 2`, "title 3"];
         const composerForm = document.querySelector('form[data-type="unified-composer"]');
         this.container = document.createElement("div");
         this.container.setAttribute("class", "results-prompter-container")
