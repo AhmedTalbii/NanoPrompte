@@ -35,15 +35,41 @@ class GenerateButton {
 
       composerForm.prepend(button);
       button.addEventListener("click", () => {
+        if (!document.getElementById("loader-style")) {
+          const style = document.createElement("style");
+          style.id = "loader-style";
+          style.textContent = `
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #007bff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        margin-left: 10px;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+          document.head.appendChild(style);
+        }
+
+        const loader = document.createElement("div");
+        loader.className = "loader";
+        this.delete();
+        composerForm.prepend(loader);
+
         let p = composerForm.querySelector("p");
         if (p) {
           chrome.runtime.sendMessage({ input: p.textContent }, (res) => {
+            loader.remove();
             if (res.error) console.error(res.error);
             else {
               let rC = new ResultsContainer();
               rC.show(res.versions);
-              this.delete();
-            };
+            }
           });
         }
       });
