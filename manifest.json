@@ -11,8 +11,6 @@
     "host_permissions": [
         "https://chatgpt.com/*",
         "https://gemini.google.com/*",
-        "https://www.perplexity.ai/*",
-        "https://grok.com/*",
         "https://claude.ai/*"
     ],
     "icons": {
@@ -25,11 +23,10 @@
             "matches": [
                 "https://chatgpt.com/*",
                 "https://gemini.google.com/*",
-                "https://www.perplexity.ai/*",
-                "https://grok.com/*",
                 "https://claude.ai/*"
             ],
             "js": [
+                "modules/config/config.js",
                 "modules/resultsContainer.js",
                 "modules/buttonGenerate.js",
                 "script.js"

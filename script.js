@@ -2,18 +2,23 @@ async function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-const generateBtn = new GenerateButton();
-
 async function init() {
+  const host = window.location.hostname;
+  const inputSelector = inputSelectors[host];
+  if (!inputSelector) return;
+
   let input;
-  while (!(input = document.querySelector(".ProseMirror"))) {
+  while (!(input = document.querySelector(inputSelector))) {
     await sleep(100);
   }
+
   let timer;
-  input.addEventListener("input", () => {
-    generateBtn.show();
+  const editor = input.tagName === "P" ? input : input;
+  editor.addEventListener("input", () => {
+    let Btn = new GenerateButton()
+    Btn.show();
     clearTimeout(timer);
-    timer = setTimeout(() => generateBtn.delete(), 20000);
+    timer = setTimeout(() => Btn.delete(), 20000);
   });
 }
 
