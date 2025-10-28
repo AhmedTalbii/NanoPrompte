@@ -5,7 +5,7 @@ class ResultsContainer {
 
     show(arr) {
         if (this.container) return;
-        const composerForm = document.querySelector('form[data-type="unified-composer"]');
+        const composerForm = document.querySelector(chatSelectors[host]);
         this.container = document.createElement("div");
         this.container.setAttribute("class", "results-prompter-container")
         Object.assign(this.container.style, {

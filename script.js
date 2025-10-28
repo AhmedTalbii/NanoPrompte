@@ -11,7 +11,8 @@ async function init() {
   while (!(input = document.querySelector(inputSelector))) {
     await sleep(100);
   }
-
+  const btnSettings = new ButtonSettings();
+  btnSettings.show();
   let timer;
   const editor = input.tagName === "P" ? input : input;
   editor.addEventListener("input", () => {

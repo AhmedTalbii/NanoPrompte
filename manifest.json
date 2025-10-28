@@ -28,8 +28,13 @@
             "js": [
                 "modules/config/config.js",
                 "modules/resultsContainer.js",
+                "modules/buttonSettings.js",
+                "modules/popUpSettings.js",
                 "modules/buttonGenerate.js",
                 "script.js"
+            ],
+            "css": [
+                "modules/statics/style.css"
             ],
             "type": "module"
         }

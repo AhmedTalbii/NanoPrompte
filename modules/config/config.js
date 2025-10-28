@@ -1,6 +1,8 @@
+const host = window.location.hostname;  
+
 const chatSelectors = {
   "chatgpt.com": 'form[data-type="unified-composer"]',
-  "gemini.google.com": 'div[_ngcontent-ng-c3644111995]',
+  "gemini.google.com": 'div[_ngcontent-ng-c3151483964]',
   "claude.ai": "fieldset.flex.w-full.min-w-0.flex-col"
 };
 const inputSelectors = {
