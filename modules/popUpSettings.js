@@ -1,24 +1,31 @@
 class PopUpSettings {
-    constructor() { this.popUP = null; }
+    constructor(buttonSettings) {
+        this.buttonSettings = buttonSettings;
+        this.overlay = null;
+    }
 
     show() {
-        this.popUP = document.createElement("div");
-        this.popUP.className = "SettingsOverlay";
+        this.overlay = document.createElement("div");
+        this.overlay.className = "SettingsOverlay";
 
         const content = document.createElement("div");
         content.className = "SettingsContent";
-        content.textContent = "Full screen popup content";
+        content.textContent = "Settings Popup";
 
         const closeBtn = document.createElement("button");
         closeBtn.textContent = "Close";
-        closeBtn.addEventListener("click", () => this.delete());
+        closeBtn.onclick = () => this.delete();
 
-        content.appendChild(closeBtn);
-        this.popUP.appendChild(content);
-        document.body.appendChild(this.popUP);
+        content.append(closeBtn);
+        this.overlay.append(content);
+        document.body.append(this.overlay);
+
+        this.overlay.addEventListener("click", (e) => {
+            if (e.target === this.overlay) this.delete();
+        });
     }
 
     delete() {
-        if (this.popUP) this.popUP.remove();
+        this.overlay.remove();
     }
 }
