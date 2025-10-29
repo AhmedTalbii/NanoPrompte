@@ -77,7 +77,8 @@ class GenerateButton {
         chrome.runtime.sendMessage({ input: text }, (res) => {
           loader.remove();
           if (res.error) console.error(res.error);
-          else new ResultsContainer().show(res.versions);
+          else {console.log(res.versions);
+          ;new ResultsContainer().show(res.versions)};
         });
       }
     });

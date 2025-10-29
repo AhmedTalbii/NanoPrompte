@@ -1,8 +1,3 @@
-body {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
 
 .Settings {
     position: fixed;
@@ -23,6 +18,7 @@ body {
 
 .SettingsOverlay {
     position: fixed;
+    cursor: pointer;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
     background: rgba(0,0,0,0.8);
@@ -36,8 +32,54 @@ body {
     background-color: gray;
     padding: 20px;
     border-radius: 10px;
+    cursor: auto;
     width: 50%;
     max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.SettingsContent h3 {
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    padding-bottom: 8px;
+}
+
+.SettingsContent label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.SettingsContent select,
+.SettingsContent textarea {
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.SettingsContent button {
+    margin-top: 8px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #0078ff;
+    color: white;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.SettingsContent button#close {
+    background-color: #555;
+}
+
+.SettingsContent button:hover {
+    background-color: #005fcc;
 }
 
 .SettingsButton {
@@ -50,7 +92,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: large;
-    background-color: red;
+    background-color: rgb(66, 66, 66);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.5s ease;
@@ -62,6 +104,6 @@ body {
 }
 
 .SettingsButton:hover {
-    transform: rotate(30deg);
+    transform: rotate(10deg);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }

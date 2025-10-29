@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Ai Prompte Helper",
+    "name": "Nano Prompt",
     "version": "1.0",
-    "description": "Ai Prompte Helper that helps pepole improve theire prompts by providing to them better resultes when theie are typing",
+    "description": "Transform your ideas into powerful AI prompts effortlessly. This extension guides you to craft, improve, and optimize prompts so you get smarter, faster, and more accurate AI results—right in your browser, instantly.",
     "permissions": [
         "http://localhost:3000/",
         "activeTab",
