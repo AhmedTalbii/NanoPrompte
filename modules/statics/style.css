@@ -16,94 +16,125 @@
     flex-direction: column;
 }
 
+
+
 .SettingsOverlay {
-    position: fixed;
-    cursor: pointer;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
 }
 
 .SettingsContent {
-    background-color: gray;
-    padding: 20px;
-    border-radius: 10px;
-    cursor: auto;
-    width: 50%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  background: linear-gradient(145deg, #1e1e1e, #2b2b2b);
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "Inter", sans-serif;
+  animation: popIn 0.25s ease;
 }
 
 .SettingsContent h3 {
-    margin-top: 0;
-    text-align: center;
-    border-bottom: 1px solid #555;
-    padding-bottom: 8px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
 }
 
 .SettingsContent label {
-    font-weight: bold;
-    margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
 }
 
 .SettingsContent select,
 .SettingsContent textarea {
-    width: 100%;
-    padding: 6px;
-    border-radius: 6px;
-    border: 1px solid #555;
-    background-color: #2a2a2a;
-    color: white;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #111;
+  color: #eee;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.SettingsContent select:focus,
+.SettingsContent textarea:focus {
+  outline: none;
+  border-color: #0078ff;
+  box-shadow: 0 0 6px #0078ff80;
 }
 
 .SettingsContent button {
-    margin-top: 8px;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    background-color: #0078ff;
-    color: white;
-    font-weight: bold;
-    transition: background 0.2s;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.SettingsContent button#save {
+  background: linear-gradient(90deg, #0078ff, #00c6ff);
+  color: white;
+}
+
+.SettingsContent button#save:hover {
+  filter: brightness(1.2);
 }
 
 .SettingsContent button#close {
-    background-color: #555;
+  background: #333;
+  color: #eee;
 }
 
-.SettingsContent button:hover {
-    background-color: #005fcc;
+.SettingsContent button#close:hover {
+  background: #555;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .SettingsButton {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: large;
-    background-color: rgb(66, 66, 66);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  height: 45px;
+  width: 45px;
+  background: radial-gradient(circle, #333 30%, #222);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  z-index: 999999;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
-.SettingsButton.hidden {
-    display: none;
+.SettingsButton img {
+    height: 70%;
+    width: 70%;
 }
 
 .SettingsButton:hover {
-    transform: rotate(10deg);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 120, 255, 0.5);
 }

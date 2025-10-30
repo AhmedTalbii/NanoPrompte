@@ -7,6 +7,6 @@ const chatSelectors = {
 };
 const inputSelectors = {
   "chatgpt.com": "p, [contenteditable='true']",
-  "gemini.google.com": "div[xapfileselectordropzone].text-input-field",
+  "gemini.google.com": "div[xapfileselectordropzone].text-input-field rich-textarea",
   "claude.ai": "textarea, [contenteditable='true']",
 };

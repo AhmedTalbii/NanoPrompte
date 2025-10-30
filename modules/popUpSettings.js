@@ -5,41 +5,46 @@ class PopUpSettings {
     }
 
     show() {
+        if (document.querySelector(".SettingsOverlay")) return;
         this.overlay = document.createElement("div");
         this.overlay.className = "SettingsOverlay";
 
         const content = document.createElement("div");
         content.className = "SettingsContent";
         content.innerHTML = `
-            <h3>Customize Nano Prompt</h3>
-            <label>AI Tone:</label>
-            <select id="tone">
-                <option value="professional">Professional</option>
-                <option value="creative">Creative</option>
-                <option value="friendly">Friendly</option>
-                <option value="analytical">Analytical</option>
-            </select><br><br>
+          <h3>
+            <img src="${chrome.runtime.getURL("assets/GenerateIcon.png")}" alt="icon" style="width:50px;height:50px;margin-right:8px;vertical-align:middle;">
+            Customize Nano Prompt
+          </h3>
 
-            <label>Prompt Style:</label>
-            <select id="style">
-                <option value="concise">Concise</option>
-                <option value="detailed">Detailed</option>
-                <option value="persuasive">Persuasive</option>
-                <option value="neutral">Neutral</option>
-            </select><br><br>
+          <label>AI Tone:</label>
+          <select id="tone">
+            <option value="professional">Professional</option>
+            <option value="creative">Creative</option>
+            <option value="friendly">Friendly</option>
+            <option value="analytical">Analytical</option>
+          </select><br><br>
 
-            <label>Output Length:</label>
-            <select id="length">
-                <option value="short">Short</option>
-                <option value="medium">Medium</option>
-                <option value="long">Long</option>
-            </select><br><br>
+          <label>Prompt Style:</label>
+          <select id="style">
+            <option value="concise">Concise</option>
+            <option value="detailed">Detailed</option>
+            <option value="persuasive">Persuasive</option>
+            <option value="neutral">Neutral</option>
+          </select><br><br>
 
-            <label>Extra Notes:</label><br>
-            <textarea id="notes" rows="2" placeholder="e.g. focus on clarity or creativity"></textarea><br><br>
+          <label>Output Length:</label>
+          <select id="length">
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+          </select><br><br>
 
-            <button id="save">Save</button>
-            <button id="close">Close</button>
+          <label>Extra Notes:</label><br>
+          <textarea id="notes" rows="2" placeholder="e.g. focus on clarity or creativity"></textarea><br><br>
+
+          <button id="save">Save</button>
+          <button id="close">Close</button>
         `;
 
         this.overlay.append(content);

@@ -2,7 +2,7 @@ import 'dotenv/config';
 import { GoogleGenAI } from "@google/genai";
 import http from "http";
 
-const allowedOrigins = ["chrome-extension://ojlcgjlkdobhdjnbknhcfghanipakeme"];
+const allowedOrigins = ["chrome-extension://blafhohpfjhicljmjfmfbahoafhfgbfk"];
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 async function optimizeText(inputText) {
