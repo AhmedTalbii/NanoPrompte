@@ -1,17 +1,17 @@
 class PopUpSettings {
-    constructor(buttonSettings) {
-        this.buttonSettings = buttonSettings;
-        this.overlay = null;
-    }
+  constructor(buttonSettings) {
+    this.buttonSettings = buttonSettings;
+    this.overlay = null;
+  }
 
-    show() {
-        if (document.querySelector(".SettingsOverlay")) return;
-        this.overlay = document.createElement("div");
-        this.overlay.className = "SettingsOverlay";
+  show() {
+    if (document.querySelector(".SettingsOverlay")) return;
+    this.overlay = document.createElement("div");
+    this.overlay.className = "SettingsOverlay";
 
-        const content = document.createElement("div");
-        content.className = "SettingsContent";
-        content.innerHTML = `
+    const content = document.createElement("div");
+    content.className = "SettingsContent";
+    content.innerHTML = `
           <h3>
             <img src="${chrome.runtime.getURL("assets/GenerateIcon.png")}" alt="icon" style="width:50px;height:50px;margin-right:8px;vertical-align:middle;">
             Customize Nano Prompt
@@ -46,28 +46,34 @@ class PopUpSettings {
           <button id="save">Save</button>
           <button id="close">Close</button>
         `;
+    this.overlay.append(content);
+    document.body.append(this.overlay);
 
-        this.overlay.append(content);
-        document.body.append(this.overlay);
+    const saved = JSON.parse(localStorage.getItem("nanoPromptSettings") || "{}");
+    if (saved.tone) content.querySelector("#tone").value = saved.tone;
+    if (saved.style) content.querySelector("#style").value = saved.style;
+    if (saved.length) content.querySelector("#length").value = saved.length;
+    if (saved.notes) content.querySelector("#notes").value = saved.notes;
 
-        content.querySelector("#close").onclick = () => this.delete();
-        content.querySelector("#save").onclick = () => {
-            const prefs = {
-                tone: content.querySelector("#tone").value,
-                style: content.querySelector("#style").value,
-                length: content.querySelector("#length").value,
-                notes: content.querySelector("#notes").value
-            };
-            console.log("Saved Settings:", prefs);
-            this.delete();
-        };
+    content.querySelector("#close").onclick = () => this.delete();
 
-        this.overlay.addEventListener("click", e => {
-            if (e.target === this.overlay) this.delete();
-        });
-    }
+    content.querySelector("#save").onclick = () => {
+      const prefs = {
+        tone: content.querySelector("#tone").value,
+        style: content.querySelector("#style").value,
+        length: content.querySelector("#length").value,
+        notes: content.querySelector("#notes").value
+      };
+      localStorage.setItem("nanoPromptSettings", JSON.stringify(prefs));
+      this.delete();
+    };
 
-    delete() {
-        this.overlay.remove();
-    }
+    this.overlay.addEventListener("click", e => {
+      if (e.target === this.overlay) this.delete();
+    });
+  }
+
+  delete() {
+    this.overlay.remove();
+  }
 }

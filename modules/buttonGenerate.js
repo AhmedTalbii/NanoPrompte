@@ -74,14 +74,15 @@ class GenerateButton {
       const input = container.querySelector(inputSelector);
       if (input) {
         const text = input.tagName === "P" ? input.textContent : input.innerText;
-        chrome.runtime.sendMessage({ input: text }, (res) => {
+        const prefs = JSON.parse(localStorage.getItem("nanoPromptSettings") || "{}");
+        chrome.runtime.sendMessage({ input: text, settings: prefs }, (res) => {
           loader.remove();
           if (res.error) console.error(res.error);
-          else {console.log(res.versions);
-          ;new ResultsContainer().show(res.versions)};
+          else new ResultsContainer().show(res.versions, host);
         });
       }
     });
+
 
     requestAnimationFrame(() => {
       button.style.opacity = "1";
